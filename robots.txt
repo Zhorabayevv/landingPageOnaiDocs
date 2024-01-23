@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Disallow: 
+
+# Host
+Host: https://onaidocs.info.kz
+
+# Sitemaps
+Sitemap: https://onaidocs.info.kz/sitemap.xml
+Sitemap: https://onaidocs.info.kz/server-sitemap.xml
