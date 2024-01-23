@@ -18,17 +18,21 @@
       <div>
         <img class="onaidocs-logo" src="/img/logo.svg" alt="onaidocs" />
       </div>
-      <div>
+      <div class="header-action">
         <ul>
           <li>О нас</li>
           <li>Услуги</li>
           <li>Контакты</li>
         </ul>
       </div>
-      <div>
+      <div class="header-action">
         <a class="login-btn" href="https://onaidocs.kz/login" target="_blank">
           Войти
         </a>
+      </div>
+
+      <div class="header-menu">
+        <img src="/img/icons/menu.svg" alt="menu" />
       </div>
     </header>
 
@@ -55,6 +59,11 @@
           <img
             class="screen-onaidocs"
             src="./img/screen_onaidocs.svg"
+            alt="onaidocs service"
+          />
+          <img
+            class="screen-onaidocs-mobile"
+            src="./img/screen_onaidocs-mobile.svg"
             alt="onaidocs service"
           />
         </div>
@@ -325,22 +334,23 @@
         <form action="">
           <div>
             <input
+              id="name"
               class="form-input"
               type="text"
               placeholder="Представьтесь *"
-              required
             />
           </div>
           <div>
             <input
+              id="phone"
               class="form-input"
               type="text"
               placeholder="Номер телефона для обратной связи *"
-              required
             />
           </div>
           <div>
             <input
+              id="email"
               class="form-input"
               type="email"
               placeholder="E-mail для обратной связи"
@@ -348,13 +358,12 @@
           </div>
           <div>
             <textarea
+              id="message"
               class="form-input"
               name=""
-              id=""
               cols="30"
               rows="10"
               placeholder="Ваше сообщение *"
-              required
             ></textarea>
           </div>
 
@@ -369,9 +378,13 @@
             </span>
           </div>
 
-          <button class="form-btn">Отправить</button>
+          <button class="form-btn" type="submit" onclick="onSubmit(event)">
+            Отправить
+          </button>
         </form>
       </div>
     </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>

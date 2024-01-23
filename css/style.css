@@ -43,7 +43,8 @@ li {
 /* header */
 
 header {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   height: 80px;
   margin: 0 auto;
   display: flex;
@@ -89,18 +90,24 @@ li:hover {
   border-radius: 8px;
 }
 
+.header-menu {
+  display: none;
+}
+
 /* main */
 
 .page-1,
 .page-2,
 .page-4 {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   margin: 100px auto 0 auto;
   text-align: center;
 }
 
 .page-1-title {
-  width: 945px;
+  width: 100%;
+  max-width: 945px;
   font-size: 50px;
   line-height: 55px;
   font-weight: 600;
@@ -109,7 +116,8 @@ li:hover {
 }
 
 .page-1-text {
-  width: 795px;
+  width: 100%;
+  max-width: 795px;
   font-size: 20px;
   line-height: 28px;
   font-weight: 400;
@@ -133,6 +141,10 @@ li:hover {
   margin: 40px auto 0 auto;
 }
 
+.screen-onaidocs-mobile {
+  display: none;
+}
+
 /* page 2 */
 .page-2-title {
   text-align: justify;
@@ -150,12 +162,14 @@ li:hover {
 }
 
 .third {
-  width: 467px;
+  width: 100%;
+  max-width: 467px;
   padding: 0 30px 20px 30px;
 }
 
 .two-thirds {
-  width: 953px;
+  width: 100%;
+  max-width: 953px;
 }
 
 .two-thirds-content {
@@ -185,7 +199,8 @@ li:hover {
 }
 
 .block-icon {
-  margin-right: 20px;
+  width: 50px;
+  margin-bottom: 16px;
 }
 
 .block-icon img {
@@ -197,7 +212,7 @@ li:hover {
   line-height: 32px;
   font-weight: 600;
   color: #0080ff;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .block-text {
@@ -482,4 +497,80 @@ input:focus-visible {
 
 .checkbox-input:checked + .checkbox-label div {
   background-color: #fff;
+}
+
+/* media queries */
+
+@media (max-width: 390px) {
+  header {
+    width: 355px;
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .header-action {
+    display: none;
+  }
+
+  .header-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .header-menu img {
+    width: 32px;
+  }
+
+  .page-1 {
+    width: 100%;
+    margin: 20px auto 0 auto;
+    text-align: center;
+  }
+
+  .page-2,
+  .page-4 {
+    width: 100%;
+    margin: 100px auto 0 auto;
+    text-align: center;
+  }
+
+  .page-1-title {
+    width: 100%;
+    font-size: 26px;
+    line-height: 29px;
+    font-weight: 600;
+  }
+
+  .page-1-text {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 20px auto;
+  }
+
+  .submit-application {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .screen-onaidocs {
+    display: none;
+  }
+
+  .screen-onaidocs-mobile {
+    display: block;
+    margin: 20px auto 0 auto;
+  }
+
+  .page-2-title {
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .page-2-content {
+  }
 }
