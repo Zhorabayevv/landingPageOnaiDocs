@@ -501,7 +501,7 @@ input:focus-visible {
 
 /* media queries */
 
-@media (max-width: 390px) {
+@media (max-width: 430px) {
   header {
     width: 355px;
     height: 70px;
