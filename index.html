@@ -12,27 +12,50 @@
     />
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   </head>
   <body>
-    <header>
-      <div>
-        <img class="onaidocs-logo" src="/img/logo.svg" alt="onaidocs" />
-      </div>
-      <div class="header-action">
-        <ul>
-          <li>О нас</li>
-          <li>Услуги</li>
-          <li>Контакты</li>
-        </ul>
-      </div>
-      <div class="header-action">
-        <a class="login-btn" href="https://onaidocs.kz/login" target="_blank">
-          Войти
-        </a>
-      </div>
+    <header id="main-header">
+      <div class="header">
+        <div>
+          <img class="onaidocs-logo" src="/img/logo.svg" alt="onaidocs" />
+        </div>
+        <div class="header-action">
+          <ul>
+            <li>О нас</li>
+            <li>Услуги</li>
+            <li>Контакты</li>
+          </ul>
+        </div>
+        <div class="header-action">
+          <a class="login-btn" href="https://onaidocs.kz/login" target="_blank">
+            Войти
+          </a>
+        </div>
 
-      <div class="header-menu">
-        <img src="/img/icons/menu.svg" alt="menu" />
+        <div class="header-menu">
+          <div class="mobile-menu-btn">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+            <div class="line line-4"></div>
+          </div>
+          <div class="mobile-menu">
+            <ul class="mobile-menu-actions">
+              <li>О нас</li>
+              <li>Услуги</li>
+              <li>Контакты</li>
+            </ul>
+
+            <a
+              class="login-btn"
+              href="https://onaidocs.kz/login"
+              target="_blank"
+            >
+              Войти
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -319,7 +342,16 @@
     </main>
 
     <section class="footer">
-      <h2 class="footer-title">Свяжитесь с нами</h2>
+      <div>
+        <h2 class="footer-title">Свяжитесь с нами</h2>
+
+        <p class="footer-left-text-mobile">
+          Вы можете связаться с нами с помощью звонка, письма на e-mail или
+          используя одну из соц.сетей, в котором мы представлены. Мы постараемся
+          ответить вам в кратчайшие сроки
+        </p>
+      </div>
+
       <div class="footer-content">
         <div class="footer-left">
           <p class="footer-left-text">
@@ -329,18 +361,22 @@
           </p>
 
           <div class="footer-left-address">
-            <strong class="address-title">Адрес</strong>
-            <strong class="address-info">
+            <div class="address-title">Адрес</div>
+            <div class="address-info">
               г.Астана, район Нұра, ул.домалақ Ана, дом 11
-            </strong>
+            </div>
           </div>
           <div class="footer-left-address">
-            <strong class="address-title">Телефон</strong>
-            <strong class="address-info">+7 (7172) 57‒14‒11</strong>
+            <div class="address-title">Телефон</div>
+            <a class="address-info" href="tel:+77172571411"
+              >+7 (7172) 57‒14‒11</a
+            >
           </div>
           <div>
-            <strong class="address-title">E-mail</strong>
-            <strong class="address-info">onaidocs.info@gmail.com</strong>
+            <div class="address-title">E-mail</div>
+            <a class="address-info" href="mailto:onaidocs.info@gmail.com"
+              >onaidocs.info@gmail.com</a
+            >
           </div>
 
           <footer class="reserved">
@@ -356,6 +392,7 @@
                 class="form-input"
                 type="text"
                 placeholder="Представьтесь *"
+                required
               />
             </div>
             <div>
@@ -364,6 +401,7 @@
                 class="form-input"
                 type="text"
                 placeholder="Номер телефона для обратной связи *"
+                required
               />
             </div>
             <div>
@@ -372,6 +410,7 @@
                 class="form-input"
                 type="email"
                 placeholder="E-mail для обратной связи"
+                required
               />
             </div>
             <div>
@@ -382,6 +421,7 @@
                 cols="30"
                 rows="10"
                 placeholder="Ваше сообщение *"
+                required
               ></textarea>
             </div>
 
@@ -389,11 +429,11 @@
               <input class="checkbox-input" type="checkbox" id="check1" />
               <label class="checkbox-label" for="check1">
                 <div><span>✔</span></div>
+                <span>
+                  Я согласен с политикой конфиденциальности и обработки
+                  персональных данных
+                </span>
               </label>
-              <span>
-                Я согласен с политикой конфиденциальности и обработки
-                персональных данных
-              </span>
             </div>
 
             <button class="form-btn" type="submit" onclick="onSubmit(event)">
