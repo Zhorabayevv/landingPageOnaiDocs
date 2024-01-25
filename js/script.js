@@ -37,15 +37,19 @@ function onSubmit(event) {
     .then((response) => {
       const statusCode = response.status;
 
+      console.log(response);
       if (statusCode === 200) {
         showAlert("success");
         return response.json();
       } else {
-        showAlert("error");
+        showAlert("failed");
       }
     })
     .then((data) => {})
-    .catch((error) => {});
+    .catch((error) => {
+      console.log(error);
+      clearForm();
+    });
 }
 
 function onClickMobileMenu(event) {
@@ -148,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
       page2Position.bottom >= 0 &&
       page2Count === 0
     ) {
-      console.log("page2");
       page2Count++;
 
       gsap.from(".page-2-title", {
@@ -219,10 +222,18 @@ function goFooter(event) {
   footer.scrollIntoView({ behavior: "smooth" });
 }
 
+function goHome(event) {
+  event.preventDefault();
+
+  onClickMobileMenu(event);
+
+  const page1 = document.getElementById("page1");
+  page1.scrollIntoView({ behavior: "smooth" });
+}
+
 function servicesLink(event) {
   event.preventDefault();
   onClickMobileMenu(event);
-  console.log("clicske");
   const page4 = document.getElementById("page4");
   page4.scrollIntoView({ behavior: "smooth" });
 }
@@ -230,7 +241,6 @@ function servicesLink(event) {
 function onaidocsLink(event) {
   event.preventDefault();
   onClickMobileMenu(event);
-  console.log("clicke");
   const page1 = document.getElementById("page1");
   page1.scrollIntoView({ behavior: "smooth" });
 }
@@ -247,31 +257,59 @@ function showAlert(type) {
   $(".alert").addClass("active");
   $(".alert").addClass(type);
 
-  gsap.from(".alert", {
-    duration: 1,
-    x: 150,
-    opacity: 0,
-    ease: "back.out(2)",
-  });
+  // gsap.from(".alert", {
+  //   duration: 1,
+  //   x: 150,
+  //   opacity: 0,
+  //   ease: "back.out(2)",
+  // });
 
-  setTimeout(function () {
-    gsap.to(".alert", {
-      duration: 1,
-      x: 150,
-      opacity: 0,
-      ease: "back.in(2)",
-    });
-  }, 3000);
+  // setTimeout(function () {
+  //   gsap.to(".alert", {
+  //     duration: 1,
+  //     x: 150,
+  //     opacity: 0,
+  //     ease: "back.in(2)",
+  //   });
+  //   alertTimeline.clear();
+  // }, 3000);
+
+  setupAlertAnimation();
+
+  alertTimeline.play();
 
   setTimeout(function () {
     $(".alert").removeClass("active");
     $(".alert").removeClass(type);
   }, 4000);
 
+  clearForm();
+}
+
+function clearForm() {
   document.getElementById("name").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
   document.getElementById("message").value = "";
+}
+
+var alertTimeline = gsap.timeline();
+
+function setupAlertAnimation() {
+  alertTimeline.clear();
+
+  alertTimeline.from(".alert", {
+    duration: 1,
+    x: 150,
+    opacity: 0,
+    ease: "back.out(2)",
+  });
+  alertTimeline.to(".alert", {
+    duration: 1,
+    x: 150,
+    opacity: 0,
+    ease: "back.in(2)",
+  });
 }
 
 const phoneInput = document.getElementById("phone");
