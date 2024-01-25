@@ -137,12 +137,13 @@ header.shadow {
 .page-4 {
   width: 100%;
   max-width: 1440px;
-  margin: 100px auto 0 auto;
+  margin: 0 auto;
   text-align: center;
+  padding-top: 100px;
 }
 
 .page-1 {
-  margin: 180px auto 0 auto;
+  padding-top: 180px;
 }
 
 .page-1-title {
@@ -282,9 +283,12 @@ header.shadow {
 
 /* page 3 */
 
+#page3 {
+  padding-top: 100px;
+}
+
 .page-3 {
   width: 100%;
-  margin-top: 100px;
   background-image: linear-gradient(
     135deg,
     #75cee72b,
@@ -334,7 +338,6 @@ header.shadow {
 
 .page-4-content {
   width: 100%;
-  margin-top: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -396,7 +399,7 @@ header.shadow {
 
 .footer {
   width: 100%;
-  margin-top: 100px;
+  padding-top: 100px;
   background-color: #0080ff;
   padding: 100px 80px;
 }
@@ -517,6 +520,10 @@ input:focus-visible {
   cursor: pointer;
 }
 
+#footer {
+  padding-top: 100px;
+}
+
 /* custom checkbox */
 .checkbox-input {
   display: none;
@@ -532,6 +539,7 @@ input:focus-visible {
 .checkbox-label div {
   width: 15px;
   height: 15px;
+  min-width: 15px;
   display: block;
   position: relative;
   border: 1px solid #fff;
@@ -545,8 +553,8 @@ input:focus-visible {
 
 .checkbox-input:checked + .checkbox-label div span {
   position: absolute;
-  top: -4px;
-  left: 2px;
+  top: -3px;
+  left: 1px;
   opacity: 1;
   color: #000000;
   font-size: 12px;
@@ -585,14 +593,75 @@ input:focus-visible {
   display: block;
   width: fit-content;
   text-align: left;
-  height: 80vh;
+  height: 70vh;
 }
 
 .mobile-menu-actions li {
   margin-bottom: 20px;
 }
 
+.alert {
+  position: absolute;
+  display: none;
+  border-radius: 4px;
+  right: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 13.5px 16px;
+  background-color: #ffffff;
+  max-width: 700px;
+}
+
+.alert.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert.success .success-icon,
+.alert.success .success-message,
+.alert.failed .failed-icon,
+.alert.failed .failed-message {
+  display: block;
+  margin-right: 16px;
+}
+
+.alert.success .failed-icon,
+.alert.success .failed-message,
+.alert.failed .success-icon,
+.alert.failed .success-message {
+  display: none;
+}
+
+.failed-message {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #ff0000;
+}
+
+.success-message {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #0080ff;
+}
+
 /* media queries */
+
+@media (max-width: 1440px) {
+  .footer-content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .form-btn {
+    margin-bottom: 30px;
+  }
+
+  .screen-onaidocs {
+    width: 100%;
+  }
+}
 
 @media (max-width: 752px) {
   header {
@@ -616,7 +685,8 @@ input:focus-visible {
 
   .page-1 {
     width: 100%;
-    margin: 90px auto 0 auto;
+    /* margin: 90px auto 0 auto; */
+    padding-top: 90px;
     text-align: center;
   }
 
@@ -624,7 +694,8 @@ input:focus-visible {
   .page-4 {
     width: 100%;
     max-width: 355px;
-    margin: 100px auto 0 auto;
+    /* margin: 100px auto 0 auto; */
+    padding-top: 100px;
     text-align: center;
   }
 

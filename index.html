@@ -13,18 +13,27 @@
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
+    <!-- Optionally, include any plugins you need, for example, the CSSPlugin for CSS-related animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/CSSPlugin.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
   </head>
   <body>
     <header id="main-header">
       <div class="header">
         <div>
-          <img class="onaidocs-logo" src="/img/logo.svg" alt="onaidocs" />
+          <img
+            id="onaidocs-logo"
+            class="onaidocs-logo"
+            src="/img/logo.svg"
+            alt="onaidocs"
+          />
         </div>
         <div class="header-action">
           <ul>
-            <li>О нас</li>
-            <li>Услуги</li>
-            <li>Контакты</li>
+            <li onclick="aboutUsLink(event)">О нас</li>
+            <li onclick="servicesLink(event)">Услуги</li>
+            <li onclick="goFooter(event)">Контакты</li>
           </ul>
         </div>
         <div class="header-action">
@@ -34,7 +43,7 @@
         </div>
 
         <div class="header-menu">
-          <div class="mobile-menu-btn">
+          <div class="mobile-menu-btn" onclick="onClickMobileMenu(event)">
             <div class="line line-1"></div>
             <div class="line line-2"></div>
             <div class="line line-3"></div>
@@ -42,9 +51,9 @@
           </div>
           <div class="mobile-menu">
             <ul class="mobile-menu-actions">
-              <li>О нас</li>
-              <li>Услуги</li>
-              <li>Контакты</li>
+              <li onclick="aboutUsLink(event)">О нас</li>
+              <li onclick="servicesLink(event)">Услуги</li>
+              <li onclick="goFooter(event)">Контакты</li>
             </ul>
 
             <a
@@ -57,11 +66,36 @@
           </div>
         </div>
       </div>
+
+      <div id="alert" class="alert">
+        <div>
+          <img
+            class="success-icon"
+            src="/img/icons/checkmark-outline.svg"
+            alt="success"
+          />
+          <img
+            class="failed-icon"
+            src="/img/icons/close-outline.svg"
+            alt="failed"
+          />
+        </div>
+        <div>
+          <span class="failed-message">
+            Извините, возникла проблема при отправке запроса. Пожалуйста,
+            попробуйте еще раз позже или свяжитесь с нами напрямую для получения
+            помощи
+          </span>
+          <span class="success-message">
+            Ваш запрос успешно отправлен! Мы свяжемся с вами в ближайшее время
+          </span>
+        </div>
+      </div>
     </header>
 
     <main>
       <!-- page 1 -->
-      <section class="page-1">
+      <section id="page1" class="page-1">
         <h1 class="page-1-title">
           Освободите себя от рутинных операций и сфокусируйтесь на росте вашего
           бизнеса
@@ -75,7 +109,9 @@
         </p>
 
         <div>
-          <button class="submit-application">Оставить заявку</button>
+          <button class="submit-application" onclick="goFooter(event)">
+            Оставить заявку
+          </button>
         </div>
 
         <div>
@@ -93,11 +129,11 @@
       </section>
 
       <!-- page 2 -->
-      <section class="page-2">
+      <section id="page2" class="page-2">
         <h2 class="page-2-title">Мы избавим вас от бумажной рутины</h2>
 
         <div class="page-2-content">
-          <div class="third block gradient-top-left">
+          <div class="third block gradient-top-left left-block">
             <div>
               <div class="block-icon">
                 <img src="./img/icons/cloud-icon.svg" alt="cloud-key" />
@@ -111,7 +147,7 @@
             </div>
           </div>
 
-          <div class="two-thirds block">
+          <div class="two-thirds block right-block">
             <div>
               <div class="two-thirds-content">
                 <div class="block-icon">
@@ -154,7 +190,7 @@
             </div>
           </div>
 
-          <div class="third block">
+          <div class="third block left-block">
             <div>
               <div class="block-icon">
                 <img
@@ -174,7 +210,7 @@
             </div>
           </div>
 
-          <div class="third block">
+          <div class="third block top-block">
             <div>
               <div class="block-icon">
                 <img src="./img/icons/control-tower.svg" alt="control-tower" />
@@ -190,7 +226,7 @@
             </div>
           </div>
 
-          <div class="third block gradient-bottom-right">
+          <div class="third block gradient-bottom-right right-block">
             <div>
               <div class="block-icon">
                 <img src="./img/icons/file-storage.svg" alt="cloud-key" />
@@ -205,7 +241,7 @@
             </div>
           </div>
 
-          <div class="two-thirds block gradient-bottom-left">
+          <div class="two-thirds block gradient-bottom-left left-block">
             <div>
               <div class="two-thirds-content">
                 <div class="block-icon">
@@ -248,7 +284,7 @@
             </div>
           </div>
 
-          <div class="third block">
+          <div class="third block right-block">
             <div>
               <div class="block-icon">
                 <img src="./img/icons/block-storage.svg" alt="block-storage" />
@@ -271,30 +307,32 @@
 
       <!-- page 3 -->
 
-      <section class="page-3">
-        <div class="page-3-content">
-          <h3 class="content-info">Скоро</h3>
-          <h2 class="page-3-content-title">
-            Мобильное приложение удобный инструмент для работы с документами
-          </h2>
+      <section id="page3">
+        <div class="page-3">
+          <div class="page-3-content">
+            <h3 class="content-info">Скоро</h3>
+            <h2 class="page-3-content-title">
+              Мобильное приложение удобный инструмент для работы с документами
+            </h2>
 
-          <p class="page-3-content-text">
-            Приложение позволяет удаленно управлять всеми процессами, на этапе
-            создания документа, поручения, редактирования, подписания и
-            контроля. Удобный интерфейс и широкий функционал делают его
-            незаменимым помощником в работе и не огранивают вас офисным
-            пространством
-          </p>
-        </div>
+            <p class="page-3-content-text">
+              Приложение позволяет удаленно управлять всеми процессами, на этапе
+              создания документа, поручения, редактирования, подписания и
+              контроля. Удобный интерфейс и широкий функционал делают его
+              незаменимым помощником в работе и не огранивают вас офисным
+              пространством
+            </p>
+          </div>
 
-        <div class="page-3-img">
-          <img src="./img/mobile-img.svg" alt="mobile" />
+          <div class="page-3-img">
+            <img src="./img/mobile-img.svg" alt="mobile" />
+          </div>
         </div>
       </section>
 
       <!-- page 4 -->
 
-      <section class="page-4">
+      <section id="page4" class="page-4">
         <div class="page-4-content">
           <div>
             <h2 class="page-4-content-title">Что мы предлагаем</h2>
@@ -302,7 +340,7 @@
               Мы предлагаем комплексные решения для вашего бизнеса
             </p>
           </div>
-          <div class="page-4-block">
+          <div class="page-4-block page-4-block-right">
             <strong class="page-4-block-number">01</strong>
             <h2 class="page-4-block-title">
               Внедрение системы электронного документооборота
@@ -315,7 +353,7 @@
             </p>
           </div>
 
-          <div class="page-4-block">
+          <div class="page-4-block page-4-block-left">
             <strong class="page-4-block-number">02</strong>
             <h2 class="page-4-block-title">Техническая поддержка системы</h2>
             <p class="page-4-block-text">
@@ -327,7 +365,7 @@
             </p>
           </div>
 
-          <div class="page-4-block">
+          <div class="page-4-block page-4-block-right">
             <strong class="page-4-block-number">03</strong>
             <h2 class="page-4-block-title">Развитие и масштабирование</h2>
             <p class="page-4-block-text">
@@ -341,105 +379,107 @@
       </section>
     </main>
 
-    <section class="footer">
-      <div>
-        <h2 class="footer-title">Свяжитесь с нами</h2>
+    <section id="footer">
+      <div class="footer">
+        <div>
+          <h2 class="footer-title">Свяжитесь с нами</h2>
 
-        <p class="footer-left-text-mobile">
-          Вы можете связаться с нами с помощью звонка, письма на e-mail или
-          используя одну из соц.сетей, в котором мы представлены. Мы постараемся
-          ответить вам в кратчайшие сроки
-        </p>
-      </div>
-
-      <div class="footer-content">
-        <div class="footer-left">
-          <p class="footer-left-text">
+          <p class="footer-left-text-mobile">
             Вы можете связаться с нами с помощью звонка, письма на e-mail или
             используя одну из соц.сетей, в котором мы представлены. Мы
             постараемся ответить вам в кратчайшие сроки
           </p>
-
-          <div class="footer-left-address">
-            <div class="address-title">Адрес</div>
-            <div class="address-info">
-              г.Астана, район Нұра, ул.домалақ Ана, дом 11
-            </div>
-          </div>
-          <div class="footer-left-address">
-            <div class="address-title">Телефон</div>
-            <a class="address-info" href="tel:+77172571411"
-              >+7 (7172) 57‒14‒11</a
-            >
-          </div>
-          <div>
-            <div class="address-title">E-mail</div>
-            <a class="address-info" href="mailto:onaidocs.info@gmail.com"
-              >onaidocs.info@gmail.com</a
-            >
-          </div>
-
-          <footer class="reserved">
-            <span>© All Rights Reserved </span>
-            <span> OnaiDocs 2024 </span>
-          </footer>
         </div>
-        <div class="footer-right">
-          <form action="">
-            <div>
-              <input
-                id="name"
-                class="form-input"
-                type="text"
-                placeholder="Представьтесь *"
-                required
-              />
+
+        <div class="footer-content">
+          <div class="footer-left">
+            <p class="footer-left-text">
+              Вы можете связаться с нами с помощью звонка, письма на e-mail или
+              используя одну из соц.сетей, в котором мы представлены. Мы
+              постараемся ответить вам в кратчайшие сроки
+            </p>
+
+            <div class="footer-left-address">
+              <div class="address-title">Адрес</div>
+              <div class="address-info">
+                г.Астана, район Нұра, ул.домалақ Ана, дом 11
+              </div>
             </div>
-            <div>
-              <input
-                id="phone"
-                class="form-input"
-                type="text"
-                placeholder="Номер телефона для обратной связи *"
-                required
-              />
+            <div class="footer-left-address">
+              <div class="address-title">Телефон</div>
+              <a class="address-info" href="tel:+77172571411"
+                >+7 (7172) 57‒14‒11</a
+              >
             </div>
-            <div>
-              <input
-                id="email"
-                class="form-input"
-                type="email"
-                placeholder="E-mail для обратной связи"
-                required
-              />
-            </div>
-            <div>
-              <textarea
-                id="message"
-                class="form-input"
-                name=""
-                cols="30"
-                rows="10"
-                placeholder="Ваше сообщение *"
-                required
-              ></textarea>
+            <div class="footer-left-address">
+              <div class="address-title">E-mail</div>
+              <a class="address-info" href="mailto:onaidocs.info@gmail.com"
+                >onaidocs.info@gmail.com</a
+              >
             </div>
 
-            <div class="form-checkbox">
-              <input class="checkbox-input" type="checkbox" id="check1" />
-              <label class="checkbox-label" for="check1">
-                <div><span>✔</span></div>
-                <span>
-                  Я согласен с политикой конфиденциальности и обработки
-                  персональных данных
-                </span>
-              </label>
-            </div>
+            <footer class="reserved">
+              <span>© All Rights Reserved </span>
+              <span> OnaiDocs 2024 </span>
+            </footer>
+          </div>
+          <div class="footer-right">
+            <form action="">
+              <div>
+                <input
+                  id="name"
+                  class="form-input"
+                  type="text"
+                  placeholder="Представьтесь *"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  id="phone"
+                  class="form-input"
+                  type="text"
+                  placeholder="Номер телефона для обратной связи *"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  id="email"
+                  class="form-input"
+                  type="email"
+                  placeholder="E-mail для обратной связи"
+                  required
+                />
+              </div>
+              <div>
+                <textarea
+                  id="message"
+                  class="form-input"
+                  name=""
+                  cols="30"
+                  rows="10"
+                  placeholder="Ваше сообщение *"
+                  required
+                ></textarea>
+              </div>
 
-            <button class="form-btn" type="submit" onclick="onSubmit(event)">
-              Отправить
-            </button>
-          </form>
+              <div class="form-checkbox">
+                <input class="checkbox-input" type="checkbox" id="check1" />
+                <label class="checkbox-label" for="check1">
+                  <div><span>✔</span></div>
+                  <span>
+                    Я согласен с политикой конфиденциальности и обработки
+                    персональных данных
+                  </span>
+                </label>
+              </div>
+
+              <button class="form-btn" type="submit" onclick="onSubmit(event)">
+                Отправить
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
