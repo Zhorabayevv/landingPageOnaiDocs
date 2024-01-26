@@ -1,2 +1,9 @@
+# dependency folders
 node_modules
+
+# build folders
 dist
+build
+
+# parcel
+.parcel-cache
