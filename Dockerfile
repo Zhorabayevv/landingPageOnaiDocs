@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 8888
 
-CMD ["parcel", "./index.html", "-p", "8888"]
+CMD ["npm", "start"]
 
