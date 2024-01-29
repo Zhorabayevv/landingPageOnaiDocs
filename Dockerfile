@@ -1,6 +1,6 @@
 FROM node:lts
 
-WORKDIR /landing
+WORKDIR /root
 
 COPY package*.json ./
 
@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 8888
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "prod"]
 
