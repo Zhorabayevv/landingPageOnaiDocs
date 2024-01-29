@@ -10,5 +10,4 @@ COPY . .
 
 EXPOSE 8888
 
-CMD ["npm" "run" "build;" "node" "server" ]
-
+CMD ["npm", "run", "build;", "node", "server"]
