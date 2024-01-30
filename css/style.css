@@ -1,11 +1,13 @@
 html {
   box-sizing: border-box;
+  background-color: #0080ff;
 }
 
 *,
 ::after,
 ::before {
   box-sizing: border-box;
+  /* overflow-x: hidden; */
 }
 
 body {
@@ -13,6 +15,9 @@ body {
   padding: 0;
   font-family: Manrope;
   font-weight: 400;
+  background-color: #ffffff;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 p,
@@ -38,6 +43,31 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+button {
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+button:disabled {
+  opacity: 0.7;
+}
+
+input,
+textarea {
+  border: 1px solid #cfd2d5;
+}
+
+input:hover {
+  border-color: #2189f1;
+}
+
+input:focus {
+  border-color: #0080ff;
 }
 
 ::-webkit-scrollbar {
@@ -103,10 +133,10 @@ li:hover {
 }
 
 .login-btn {
-  padding: 14px 30px;
+  padding: 10px 30px;
   color: #0080ff;
   border: 2px solid #0080ff;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 28px;
   font-weight: 500;
   border-radius: 8px;
@@ -124,6 +154,7 @@ header {
   transform: translateX(-50%);
   width: 100%;
   background-color: #ffffff;
+  padding: 0 20px;
 }
 
 header.shadow {
@@ -139,11 +170,11 @@ header.shadow {
   max-width: 1440px;
   margin: 0 auto;
   text-align: center;
-  padding-top: 100px;
+  padding: 100px 20px 0 20px;
 }
 
 .page-1 {
-  padding-top: 180px;
+  padding: 180px 20px 0 20px;
 }
 
 .page-1-title {
@@ -203,13 +234,13 @@ header.shadow {
 }
 
 .third {
-  width: 100%;
+  width: 32%;
   max-width: 467px;
   padding: 0 30px 20px 30px;
 }
 
 .two-thirds {
-  width: 100%;
+  width: 66%;
   max-width: 953px;
 }
 
@@ -334,6 +365,10 @@ header.shadow {
   color: #000000;
 }
 
+.screen-content-img img {
+  width: 100%;
+}
+
 /* page 4 */
 
 .page-4-content {
@@ -345,7 +380,8 @@ header.shadow {
 }
 
 .page-4-content div {
-  width: 710px;
+  width: 49%;
+  max-width: 710px;
   height: 340px;
   text-align: left;
   margin-bottom: 20px;
@@ -401,7 +437,7 @@ header.shadow {
   width: 100%;
   padding-top: 100px;
   background-color: #0080ff;
-  padding: 100px 80px;
+  padding: 100px 80px 40px 80px;
 }
 
 .footer-content {
@@ -411,6 +447,7 @@ header.shadow {
 .footer-left {
   color: #ffffff;
   width: 50%;
+  font-family: Inter;
 }
 
 .footer-title {
@@ -422,11 +459,13 @@ header.shadow {
 }
 
 .footer-left-text {
-  width: 660px;
+  width: 100%;
+  max-width: 660px;
   font-size: 18px;
   line-height: 25px;
   font-weight: 400;
   margin-bottom: 24px;
+  padding-right: 10px;
 }
 
 .footer-left-text-mobile {
@@ -474,14 +513,14 @@ textarea,
 .form-input {
   font-family: Open Sans;
 
-  width: 710px;
+  width: 100%;
+  max-width: 710px;
   color: #212b36;
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
   padding: 18px 14px;
   border-radius: 4px;
-  border: none;
   resize: none;
 }
 
@@ -649,9 +688,8 @@ input:focus-visible {
 /* media queries */
 
 @media (max-width: 1440px) {
-  .footer-content {
-    display: flex;
-    flex-direction: column-reverse;
+  .footer {
+    padding: 100px 20px 20px 20px;
   }
 
   .form-btn {
@@ -661,6 +699,11 @@ input:focus-visible {
   .screen-onaidocs {
     width: 100%;
   }
+
+  .screen-content-img img {
+    width: 100%;
+    max-width: 807px;
+  }
 }
 
 @media (max-width: 752px) {
@@ -669,7 +712,7 @@ input:focus-visible {
   }
 
   header {
-    width: 100%;
+    /* width: 100%; */
     height: 70px;
     padding: 0 20px;
   }
@@ -699,8 +742,9 @@ input:focus-visible {
     width: 100%;
     max-width: 355px;
     /* margin: 100px auto 0 auto; */
-    padding-top: 100px;
+    padding: 100px 0 0 0;
     text-align: center;
+    overflow-x: hidden;
   }
 
   .page-1-title {
@@ -738,9 +782,6 @@ input:focus-visible {
     font-weight: 400;
     margin-bottom: 20px;
     text-align: left;
-  }
-
-  .page-2-content {
   }
 
   .page-2-content .block {
@@ -804,8 +845,14 @@ input:focus-visible {
     margin: 0 auto;
   }
 
+  .screen-content-img img {
+    width: auto;
+    max-width: fit-content;
+  }
+
   .page-3 {
     display: block;
+    overflow-x: hidden;
   }
 
   .page-3-content {
@@ -869,7 +916,7 @@ input:focus-visible {
     width: 100%;
     max-width: 752px;
     display: block;
-    padding: 40px 20px;
+    padding: 40px 20px 10px 20px;
     border-radius: 16px 16px 0 0;
   }
 

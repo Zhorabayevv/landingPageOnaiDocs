@@ -29,14 +29,14 @@ function onSubmit(event) {
     },
     body: JSON.stringify(data),
   };
-
+  $(".form-btn").prop("disabled", true);
   fetch(
-    "http://192.168.1.117:8082/api/v1/admin/telegram/send-message-to-group/",
+    "https://onaidocs.kz/api/v1/admin/telegram/send-message-to-group/",
     requestOptions
   )
     .then((response) => {
       const statusCode = response.status;
-
+      $(".form-btn").prop("disabled", false);
       console.log(response);
       if (statusCode === 200) {
         showAlert("success");
@@ -45,15 +45,23 @@ function onSubmit(event) {
         showAlert("failed");
       }
     })
-    .then((data) => {})
     .catch((error) => {
+      $(".form-btn").prop("disabled", false);
       console.log(error);
       clearForm();
+      const phoneInput = document.getElementById("phone");
+
+      IMask(phoneInput, {
+        mask: "+7 (000) 000 00 00",
+        lazy: false,
+        placeholderChar: "_",
+      });
     });
 }
 
-function onClickMobileMenu(event) {
+function onClickMobileMenu(event, type) {
   event.preventDefault();
+  if (type === "close") return;
 
   $(".mobile-menu-btn").toggleClass("toggle");
   $(".mobile-menu").toggleClass("active");
@@ -216,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function goFooter(event) {
   event.preventDefault();
 
-  onClickMobileMenu(event);
+  onClickMobileMenu(event, "close");
 
   const footer = document.getElementById("footer");
   footer.scrollIntoView({ behavior: "smooth" });
@@ -291,6 +299,7 @@ function clearForm() {
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
   document.getElementById("message").value = "";
+  document.getElementById("check1").checked = false;
 }
 
 var alertTimeline = gsap.timeline();
@@ -314,7 +323,7 @@ function setupAlertAnimation() {
 
 const phoneInput = document.getElementById("phone");
 
-let phoneMask = IMask(phoneInput, {
+IMask(phoneInput, {
   mask: "+7 (000) 000 00 00",
   lazy: false,
   placeholderChar: "_",
