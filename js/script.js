@@ -78,25 +78,30 @@ document.addEventListener("DOMContentLoaded", function () {
   let lastScroll = 0;
 
   gsap.from(".page-1-title", {
-    duration: 1,
+    duration: 0.7,
     y: -150,
     opacity: 0,
     ease: "back.out(2)",
   });
   gsap.from(".screen-onaidocs", {
-    duration: 1.5,
+    duration: 0.7,
     x: -150,
     opacity: 0,
     ease: "sine.inOut(2)",
   });
+  gsap.from(".submit-application", {
+    duration: 0.7,
+    y: -150,
+    opacity: 0,
+    ease: "sine.inOut(2)",
+  });
 
-  gsap.from(".page-1", { duration: 1, delay: 1, y: 50, opacity: 0 });
+  // gsap.from(".page-1", { duration: 0.5, delay: 1, y: 50, opacity: 0 });
 
   var timeline = gsap.timeline({});
 
-  timeline
-    .from(".page-1-text", { x: -150, duration: 0.7, opacity: 0 })
-    .from(".submit-application", { y: -100, duration: 1, opacity: 0 });
+  timeline.from(".page-1-text", { x: -150, duration: 0.7, opacity: 0 });
+  // .from(".submit-application", { y: -100, duration: 0.5, opacity: 0 });
 
   window.addEventListener("scroll", function () {
     let currentScroll = window.scrollY;
