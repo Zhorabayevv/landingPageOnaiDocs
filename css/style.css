@@ -46,15 +46,15 @@ li {
 }
 
 button {
-  opacity: 0.9;
+  opacity: 0.9 !important;
 }
 
 button:hover {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-button:disabled {
-  opacity: 0.7;
+.form-btn:disabled {
+  opacity: 0.7 !important;
 }
 
 input,
@@ -210,10 +210,12 @@ header.shadow {
 }
 
 .screen-onaidocs {
+  width: 100%;
   margin: 40px auto 0 auto;
 }
 
 .screen-onaidocs-mobile {
+  width: 100%;
   display: none;
 }
 
@@ -366,6 +368,9 @@ header.shadow {
 }
 
 .screen-content-img img {
+  width: 100%;
+}
+.page-3-img img {
   width: 100%;
 }
 
@@ -875,7 +880,7 @@ input:focus-visible {
   }
 
   .page-3-img img {
-    width: 315px;
+    width: 100%;
   }
 
   .page-4-content div {

@@ -36,7 +36,6 @@ function onSubmit(event) {
   )
     .then((response) => {
       const statusCode = response.status;
-      $(".form-btn").prop("disabled", false);
       console.log(response);
       if (statusCode === 200) {
         showAlert("success");
@@ -46,16 +45,8 @@ function onSubmit(event) {
       }
     })
     .catch((error) => {
-      $(".form-btn").prop("disabled", false);
       console.log(error);
       clearForm();
-      const phoneInput = document.getElementById("phone");
-
-      IMask(phoneInput, {
-        mask: "+7 (000) 000 00 00",
-        lazy: false,
-        placeholderChar: "_",
-      });
     });
 }
 
@@ -270,23 +261,6 @@ function showAlert(type) {
   $(".alert").addClass("active");
   $(".alert").addClass(type);
 
-  // gsap.from(".alert", {
-  //   duration: 1,
-  //   x: 150,
-  //   opacity: 0,
-  //   ease: "back.out(2)",
-  // });
-
-  // setTimeout(function () {
-  //   gsap.to(".alert", {
-  //     duration: 1,
-  //     x: 150,
-  //     opacity: 0,
-  //     ease: "back.in(2)",
-  //   });
-  //   alertTimeline.clear();
-  // }, 3000);
-
   setupAlertAnimation();
 
   alertTimeline.play();
@@ -305,6 +279,14 @@ function clearForm() {
   document.getElementById("email").value = "";
   document.getElementById("message").value = "";
   document.getElementById("check1").checked = false;
+
+  const phoneInput = document.getElementById("phone");
+
+  IMask(phoneInput, {
+    mask: "+7 (000) 000 00 00",
+    lazy: false,
+    placeholderChar: "_",
+  });
 }
 
 var alertTimeline = gsap.timeline();
