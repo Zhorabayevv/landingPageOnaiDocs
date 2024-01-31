@@ -5,7 +5,8 @@
   "scripts": {
     "start": "parcel ./index.html -p 8888",
     "build": "parcel build ./index.html --dist-dir ./build",
-    "prod": "parcel ./index.html -p 8888 --public-url /info/"
+    "prod": "parcel ./index.html -p 8888 --public-url /info/",
+    "prod_build": "parcel build ./index.html --dist-dir ./build --public-url /info/"
   },
   "repository": {
     "type": "git",
