@@ -256,8 +256,10 @@ function aboutUsLink(event) {
   page2.scrollIntoView({ behavior: "smooth" });
 }
 
+let alertTimeout;
+
 function showAlert(type) {
-  document.getElementById("alert");
+  const alert = document.getElementById("alert");
   $(".alert").addClass("active");
   $(".alert").addClass(type);
 
@@ -265,11 +267,12 @@ function showAlert(type) {
 
   alertTimeline.play();
 
-  setTimeout(function () {
+  clearTimeout(alertTimeout);
+
+  alertTimeout = setTimeout(function () {
     $(".alert").removeClass("active");
     $(".alert").removeClass(type);
   }, 4000);
-
   clearForm();
 }
 
@@ -294,14 +297,22 @@ var alertTimeline = gsap.timeline();
 function setupAlertAnimation() {
   alertTimeline.clear();
 
-  alertTimeline.from(".alert", {
-    duration: 1,
-    x: 150,
-    opacity: 0,
-    ease: "back.out(2)",
-  });
+  alertTimeline.fromTo(
+    ".alert",
+    {
+      duration: 1,
+      x: 150,
+      opacity: 0,
+      ease: "back.out(2)",
+    },
+    {
+      x: 0,
+      opacity: 1,
+    }
+  );
   alertTimeline.to(".alert", {
     duration: 1,
+    delay: 2,
     x: 150,
     opacity: 0,
     ease: "back.in(2)",
